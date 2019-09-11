@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- spring整合mybatis的配置文件 
+		sqlSessionFacoryBean
+	-->
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:mybatis/mybatis-config.xml"></property>
+		<property name="mapperLocations" value="classpath*:mybatis/mapper/*.xml"></property>
+		<property name="dataSource" ref="druidDataSource"></property>
+		<property name="plugins">
+			 <bean class="com.github.pagehelper.PageInterceptor" >
+		          <property name="properties">
+		           <value>reasonable=true</value><!--分页合理化 :如果点击下一页时没有最后一页了 跳转到第一页   -->
+	          	  </property>
+      		 </bean>
+		</property>
+	</bean>
+	<!-- mapper接口扫描类 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.atguigu.atcrowdfunding.mapper"></property>
+	</bean>
+</beans>

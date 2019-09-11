@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: scw-ui
+
+  redis:
+    host: 101.132.138.187 
+    port: 6379
+    # type: com.alibaba.druid.pool.DruidDataSource
+
+server:
+  port: 10000
+eureka:
+  instance:
+    ip-address: 101.132.138.187  # 当前应用部署后的ip地址
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://47.103.34.16:8761/eureka/

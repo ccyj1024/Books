@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 提取的登录状态栏 -->
+	<div id="loginStatusFragment">
+		<!-- 未登录状态栏 -->
+            <div id="navbar" th:if="${session.user}==null" class="navbar-collapse collapse" style="float:right;">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a th:href="@{login.html}" href="login.html">登录</a></li>
+                <li><a th:href="@{reg.html}" href="reg.html">注册</a></li>
+              </ul>
+            </div>
+            <!-- 已登录状态栏 -->
+            <div id="navbar" th:if="${session.user}!=null" class="navbar-collapse collapse" style="float:right;">
+              <ul class="nav navbar-nav">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> <span th:text="${session.user.username}">张三</span> /  [[${session.user.username}]]  <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="member.html"><i class="glyphicon glyphicon-scale"></i> 会员中心</a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-comment"></i> 消息</a></li>
+                    <li class="divider"></li>
+                    <li><a href="index.html"><i class="glyphicon glyphicon-off"></i> 退出系统</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+	</div>
+
+
+
+
+
+	<!-- th:fragment:提取页面片段 -->
+	<div th:fragment="cssFragment">
+		<link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" href="bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" href="css/font-awesome.min.css">
+		<link rel="stylesheet" th:href="@{/css/carousel.css}" href="css/carousel.css">
+		<link rel="stylesheet" th:href="@{/css/login.css}" href="css/login.css">
+		<link rel="stylesheet" th:href="@{/css/theme.css}"  href="css/theme.css">
+	</div>
+
+	<div th:fragment="jsFragment">
+		<script th:src="@{/jquery/jquery-2.1.1.min.js}" src="jquery/jquery-2.1.1.min.js"></script>
+	    <script th:src="@{/bootstrap/js/bootstrap.min.js}" src="bootstrap/js/bootstrap.min.js"></script>
+		<script th:src="@{/script/docs.min.js}" src="script/docs.min.js"></script>
+	    <script th:src="@{/script/back-to-top.js}" src="script/back-to-top.js"></script>
+	</div>
+
+
+	<div class="footerFragment">
+		<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<div id="footer">
+					<div class="footerNav">
+						 <a rel="nofollow" href="http://www.atguigu.com">关于我们</a> | <a rel="nofollow" href="http://www.atguigu.com">服务条款</a> | <a rel="nofollow" href="http://www.atguigu.com">免责声明</a> | <a rel="nofollow" href="http://www.atguigu.com">网站地图</a> | <a rel="nofollow" href="http://www.atguigu.com">联系我们</a>
+					</div>
+					<div class="copyRight">
+						Copyright ?2017-2019atguigu.com 版权所有
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	</div>
+
+</body>
+</html>

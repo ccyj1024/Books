@@ -1,0 +1,32 @@
+server:
+  port: 10000
+#  servlet:
+#    context-path: /scw-ui
+
+spring:
+  application:
+    name: scw-ui
+  thymeleaf:
+    cache: false  # 取消使用thymeleaf的缓存方便调试， 当应用正式上线时才使用缓存
+feign:
+  hystrix:
+    enabled: true
+  httpclient:
+    connection-timeout: 10000
+eureka:
+  instance: 
+    prefer-ip-address: true
+  client:
+    service-url: 
+      defaultZone: http://localhost:8761/eureka/
+# 配置thymeleaf
+
+#取消Ribbon重试机制
+ribbon:
+  ReadTimeout: 3000
+  ConnectTimeout: 3000
+  MaxAutoRetries: 0 #同一台实例最大重试次数,不包括首次调用
+  MaxAutoRetriesNextServer: 0#重试负载均衡其他的实例最大重试次数,不包括首次调用
+  OkToRetryOnAllOperations: false  #是否所有操作都重试 
+  
+

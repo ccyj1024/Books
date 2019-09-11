@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+		</encoder>
+	</appender>
+	<!-- 所有的日志输出的级别配置 -->
+	<root level="WARN">
+		<appender-ref ref="STDOUT" />
+	</root>
+	<!-- 日志：从低到高；只会打印指定级别以后的; additivity表示是否将日志信息反馈给root
+     DEBUG==》INFO===》WARN===》ERROR
+		Additivity：false ,避免重复打印日志
+     -->
+     <logger name="com.atguigu.atcrowdfunding" level="DEBUG" additivity="false">  
+         <appender-ref ref="STDOUT"/>  
+     </logger>
+</configuration>
